@@ -83,6 +83,10 @@ elseif( APPLE )
 	target_link_libraries( bgfx PUBLIC ${COCOA_LIBRARY} ${METAL_LIBRARY} ${QUARTZCORE_LIBRARY} )
 endif()
 
+if ( APPLE )
+target_compile_definitions(bgfx PRIVATE BGFX_CONFIG_RENDERER_METAL=1)
+endif()
+
 if( UNIX AND NOT APPLE AND NOT EMSCRIPTEN AND NOT ANDROID )
 	find_package(X11 REQUIRED)
 	find_package(OpenGL REQUIRED)
